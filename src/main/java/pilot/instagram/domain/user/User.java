@@ -1,7 +1,9 @@
 package pilot.instagram.domain.user;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import pilot.instagram.domain.comment.Comment;
 import pilot.instagram.domain.common.BaseTimeEntity;
 import pilot.instagram.domain.follow.Follow;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseTimeEntity {
 
     @Column(name = "user_id")
