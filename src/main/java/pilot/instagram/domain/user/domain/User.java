@@ -2,6 +2,7 @@ package pilot.instagram.domain.user.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pilot.instagram.domain.comment.Comment;
@@ -9,6 +10,7 @@ import pilot.instagram.domain.common.BaseTimeEntity;
 import pilot.instagram.domain.follow.Follow;
 import pilot.instagram.domain.like.Like;
 import pilot.instagram.domain.post.Post;
+import pilot.instagram.domain.user.request.UserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,4 +39,15 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "following")
     private List<Follow> followings;
+
+    @Builder
+    private User(String name) {
+        this.name = name;
+    }
+
+    public static User fromDtoToUser(UserRequest userRequest) {
+        return User.builder()
+                .name(userRequest.getName())
+                .build();
+    }
 }
