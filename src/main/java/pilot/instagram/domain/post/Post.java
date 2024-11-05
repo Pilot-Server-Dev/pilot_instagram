@@ -7,7 +7,7 @@ import pilot.instagram.domain.comment.Comment;
 import pilot.instagram.domain.common.BaseTimeEntity;
 import pilot.instagram.domain.like.Like;
 import pilot.instagram.domain.media.Media;
-import pilot.instagram.domain.user.User;
+import pilot.instagram.domain.user.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;
