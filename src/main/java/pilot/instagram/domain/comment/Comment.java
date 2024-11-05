@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import pilot.instagram.domain.common.BaseTimeEntity;
 import pilot.instagram.domain.post.Post;
-import pilot.instagram.domain.user.User;
+import pilot.instagram.domain.user.domain.User;
 
 @Entity @Getter
 public class Comment extends BaseTimeEntity {

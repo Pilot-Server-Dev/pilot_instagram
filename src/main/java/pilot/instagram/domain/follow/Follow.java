@@ -3,7 +3,7 @@ package pilot.instagram.domain.follow;
 import jakarta.persistence.*;
 import lombok.Getter;
 import pilot.instagram.domain.common.BaseTimeEntity;
-import pilot.instagram.domain.user.User;
+import pilot.instagram.domain.user.domain.User;
 
 @Entity @Getter
 public class Follow extends BaseTimeEntity {
