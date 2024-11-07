@@ -19,9 +19,8 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseTimeEntity {
 
-    @Column(name = "user_id")
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id @Column(name = "user_id", unique = true, nullable = false)
+    private String id;
 
     private String name;
 
@@ -41,12 +40,14 @@ public class User extends BaseTimeEntity {
     private List<Follow> followings;
 
     @Builder
-    private User(String name) {
+    private User(String id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public static User fromDtoToUser(UserRequest userRequest) {
         return User.builder()
+                .id(userRequest.getId())
                 .name(userRequest.getName())
                 .build();
     }
