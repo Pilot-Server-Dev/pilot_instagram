@@ -9,3 +9,13 @@
 - 유저는 게시글에 좋아요를 누르고 취소할 수 있다.
 - 하나의 게시글에 최대 30개의 해시태그를 달 수 있다.
 - 유저들끼리 서로 팔로우를 할 수 있다.
+
+## 기술 스택
+`Spring Boot 3.3.5`
+`Java 17`
+`MySQL`
+`JPA`
+`Junit`
+
+## DB 구조 (미완)
+<img width="855" alt="image" src="https://github.com/user-attachments/assets/6c4eb2b7-d006-4148-9d81-af68a82ba122">
