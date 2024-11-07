@@ -1,14 +1,13 @@
 package pilot.instagram.domain.user.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRequest {
+    @NonNull
+    private String id;
     private String name;
 }

@@ -6,11 +6,11 @@ import pilot.instagram.domain.user.domain.User;
 
 @Getter
 public class UserResponse {
-    private Long id;
+    private String id;
     private String name;
 
     @Builder
-    private UserResponse(Long id, String name) {
+    private UserResponse(String id, String name) {
         this.id = id;
         this.name = name;
     }
