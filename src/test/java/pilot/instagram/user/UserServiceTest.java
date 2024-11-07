@@ -24,13 +24,14 @@ public class UserServiceTest {
     @DisplayName("신규 유저를 등록한다.")
     void saveUser() {
         //given
-        UserRequest userRequest = UserRequest.builder().name("이기태").build();
+        UserRequest userRequest = UserRequest.builder().id("7l.tae").name("이기태").build();
 
         //when
         UserResponse userResponse = userService.saveUser(userRequest);
 
         //then
         assertThat(userResponse.getId()).isNotNull();
+        assertThat(userResponse.getId()).isEqualTo("7l.tae");
         assertThat(userResponse.getName()).isEqualTo("이기태");
     }
 }

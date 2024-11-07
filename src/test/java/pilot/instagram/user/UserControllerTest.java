@@ -32,7 +32,7 @@ public class UserControllerTest {
     @DisplayName("신규 회원을 등록한다.")
     void saveUser() throws Exception {
         // given
-        UserRequest userRequest = UserRequest.builder().name("이기태").build();
+        UserRequest userRequest = UserRequest.builder().id("7l.tae").name("이기태").build();
 
 
         // when, then
