@@ -23,7 +23,8 @@ public class AopConfig {
 
         // 메서드 정보 받아오기
         Method method = getMethod(proceedingJoinPoint);
-        log.info("======= method name = {} =======", method.getName());
+        log.info("==================================================================================");
+        log.info("method name = {} ", method.getName());
 
         // 파라미터 받아오기
         Object[] args = proceedingJoinPoint.getArgs();
@@ -49,6 +50,7 @@ public class AopConfig {
 
         // 실행 시간 로깅
         log.info("execution time = {}s", executionTIme);
+        log.info("==================================================================================");
 
         return returnObj;
     }
