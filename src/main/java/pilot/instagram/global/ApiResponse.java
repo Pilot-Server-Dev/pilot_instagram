@@ -1,9 +1,7 @@
-package pilot.instagram.config;
+package pilot.instagram.global;
 
-import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import pilot.instagram.domain.user.response.UserResponse;
 
 @Getter
 public class ApiResponse<T> {

@@ -1,4 +1,4 @@
-package pilot.instagram.config;
+package pilot.instagram.global;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 @Slf4j
 @Aspect
 @Component
-public class AopConfig {
+public class Aop {
 
     @Pointcut("execution(* pilot.instagram.domain.user.UserController.*(..))")
     private void cut() {}
