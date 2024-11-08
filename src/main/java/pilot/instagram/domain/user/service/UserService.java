@@ -17,6 +17,11 @@ public class UserService {
 
     @Transactional
     public UserResponse saveUser(UserRequest userRequest) {
+        validateDuplicateId(userRequest.getId());
         return UserResponse.of(userRepository.save(User.fromDtoToUser(userRequest)));
+    }
+
+    private void validateDuplicateId(String id) {
+        userRepository.findById(id).ifPresent(u -> {throw new IllegalArgumentException("DUPLICATE_ID");});
     }
 }
