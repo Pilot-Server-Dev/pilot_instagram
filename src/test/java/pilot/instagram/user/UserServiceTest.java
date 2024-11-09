@@ -1,5 +1,6 @@
 package pilot.instagram.user;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import pilot.instagram.domain.user.request.UserRequest;
 import pilot.instagram.domain.user.response.UserResponse;
 import pilot.instagram.domain.user.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,11 +26,20 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
+    private final List<String> usedIds = new ArrayList<>();
+
+    @AfterEach
+    void tearDown() {
+        usedIds.forEach(id -> userRepository.deleteById(id));
+        usedIds.clear();
+    }
+
     @Test
     @DisplayName("신규 유저를 등록한다.")
     void saveUser() {
         //given
         String id = UUID.randomUUID().toString();
+        usedIds.add(id);
         UserRequest userRequest = UserRequest.builder().id(id).name("이기태").build();
 
         //when
@@ -44,6 +56,7 @@ public class UserServiceTest {
     void saveDuplicateUser() {
         //given
         String id = UUID.randomUUID().toString();
+        usedIds.add(id);
         UserRequest userRequest = UserRequest.builder().id(id).name("이기태").build();
 
         //when //then
