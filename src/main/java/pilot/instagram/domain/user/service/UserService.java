@@ -22,6 +22,6 @@ public class UserService {
     }
 
     private void validateDuplicateId(String id) {
-        userRepository.findById(id).ifPresent(u -> {throw new IllegalArgumentException("DUPLICATE_ID");});
+        userRepository.findById(id).ifPresent(user -> {throw new IllegalArgumentException("DUPLICATE_ID");});
     }
 }
