@@ -15,7 +15,6 @@ public class ApiControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ApiResponse<Object> argumentException(MethodArgumentNotValidException e) {
-        System.out.println(e.getMessage() + "aaaa");
         return ApiResponse.of(HttpStatus.BAD_REQUEST, e.getFieldError().getDefaultMessage(), null);
     }
 }
