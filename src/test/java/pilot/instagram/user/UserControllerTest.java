@@ -51,6 +51,23 @@ public class UserControllerTest {
     }
 
     @Test
+    @DisplayName("신규 회원을 등록할 때 아이디는 필수로 입력해야 한다.")
+    void saveUserWithoutId() throws Exception {
+        // given
+        UserRequest userRequest = UserRequest.builder().id(null).name("이기태").build();
+
+
+        // when, then
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/user/new")
+                .content(objectMapper.writeValueAsString(userRequest))
+                .contentType(MediaType.APPLICATION_JSON)
+            )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(jsonPath("$.code").value(400))
+            .andExpect(jsonPath("$.message").value("유저 아이디는 필수로 입력해야 합니다."));
+    }
+
+    @Test
     @DisplayName("중복된 아이디로 신규 유저 등록 시 실패한다.")
     void saveDuplicateUser() throws Exception {
         // given
