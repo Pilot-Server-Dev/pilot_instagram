@@ -2,7 +2,7 @@ package pilot.instagram.domain.user.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import pilot.instagram.domain.user.domain.User;
+import pilot.instagram.domain.user.entity.User;
 
 @Getter
 public class UserResponse {

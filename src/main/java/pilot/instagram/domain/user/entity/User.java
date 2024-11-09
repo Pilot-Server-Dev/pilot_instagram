@@ -1,4 +1,4 @@
-package pilot.instagram.domain.user.domain;
+package pilot.instagram.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
