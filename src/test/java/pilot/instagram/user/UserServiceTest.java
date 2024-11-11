@@ -63,6 +63,37 @@ public class UserServiceTest {
         userService.saveUser(userRequest);
         assertThatThrownBy(() -> userService.saveUser(userRequest))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("DUPLICATE_ID");
+                .hasMessage("중복된 아이디입니다");
+    }
+
+    @Test
+    @DisplayName("회원가입 된 계정으로 로그인을 한다.")
+    void loginWithSavedAccount() {
+        //given
+        String id = UUID.randomUUID().toString();
+        usedIds.add(id);
+        UserRequest userRequest = UserRequest.builder().id(id).name("이기태").build();
+
+        //when
+        UserResponse userResponse = userService.saveUser(userRequest);
+
+        //then
+        assertThat(userResponse.getId()).isNotNull();
+        assertThat(userResponse.getId()).isEqualTo(id);
+        assertThat(userResponse.getName()).isEqualTo("이기태");
+    }
+
+    @Test
+    @DisplayName("회원가입 안된 계정으로 로그인은 불가능하다.")
+    void loginWithUnsavedAccount() {
+        //given
+        String id = UUID.randomUUID().toString();
+        usedIds.add(id);
+        UserRequest userRequest = UserRequest.builder().id(id).name("이기태").build();
+
+        //when //then
+        assertThatThrownBy(() -> userService.login(userRequest.getId()))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("아이디를 찾을 수 없습니다");
     }
 }

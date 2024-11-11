@@ -28,6 +28,6 @@ public class UserService {
     }
 
     private void validateDuplicateId(String id) {
-        userRepository.findById(id).ifPresent(user -> {throw new IllegalArgumentException("중복된 아이디입니다.");});
+        userRepository.findById(id).ifPresent(user -> {throw new IllegalArgumentException("중복된 아이디입니다");});
     }
 }
