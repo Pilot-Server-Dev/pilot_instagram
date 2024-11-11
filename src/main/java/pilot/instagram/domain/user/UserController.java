@@ -23,13 +23,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ApiResponse<String> login(@Valid @RequestBody UserRequest userRequest, HttpSession session) {
-        session.setAttribute("user", userRequest.getId());
-        return ApiResponse.of(HttpStatus.OK, session.getId());
-    }
-
-    @GetMapping("/test")
-    public String test(HttpSession httpSession) {
-        return httpSession.getAttribute("user").toString();
+    public ApiResponse<UserResponse> login(@Valid @RequestBody UserRequest userRequest, HttpSession session) {
+        UserResponse userResponse = userService.login(userRequest.getId());
+        session.setAttribute("userId", userRequest.getId());
+        // session.getAttribute("userId") 로 userId를 세션에서 가져올 수 있음
+        return ApiResponse.of(HttpStatus.OK, userResponse);
     }
 }
