@@ -76,7 +76,7 @@ public class UserControllerTest {
 
         // when, then
         userService.saveUser(userRequest);
-        doThrow(new IllegalArgumentException("DUPLICATE_ID"))
+        doThrow(new IllegalArgumentException("중복된 아이디입니다"))
                 .when(userService).saveUser(argThat(req -> req.getId().equals(id)));
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/user/new")
@@ -86,7 +86,7 @@ public class UserControllerTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(jsonPath("$.code").value(400))
                 .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
-                .andExpect(jsonPath("$.message").value("DUPLICATE_ID"));
+                .andExpect(jsonPath("$.message").value("중복된 아이디입니다"));
     }
 
 }
