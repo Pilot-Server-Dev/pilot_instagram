@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pilot.instagram.domain.user.repository.UserRepository;
-import pilot.instagram.domain.user.request.UserRequest;
-import pilot.instagram.domain.user.response.UserResponse;
+import pilot.instagram.domain.user.dto.request.UserRequest;
+import pilot.instagram.domain.user.dto.response.UserResponse;
 import pilot.instagram.domain.user.service.UserService;
 
 import java.util.ArrayList;
