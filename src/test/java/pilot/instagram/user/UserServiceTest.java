@@ -9,6 +9,7 @@ import pilot.instagram.domain.user.repository.UserRepository;
 import pilot.instagram.domain.user.dto.request.UserRequest;
 import pilot.instagram.domain.user.dto.response.UserResponse;
 import pilot.instagram.domain.user.service.UserService;
+import pilot.instagram.exception.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class UserServiceTest {
         userService.saveUser(userRequest);
         assertThatThrownBy(() -> userService.saveUser(userRequest))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 아이디입니다");
+                .hasMessage(ErrorCode.DUPLICATED_ID.getMessage());
     }
 
     @Test
@@ -94,6 +95,6 @@ public class UserServiceTest {
         //when //then
         assertThatThrownBy(() -> userService.login(userRequest.getId()))
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("아이디를 찾을 수 없습니다");
+            .hasMessage(ErrorCode.USER_NOT_FOUND.getMessage());
     }
 }
