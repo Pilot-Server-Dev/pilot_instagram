@@ -2,7 +2,7 @@ package pilot.instagram.domain.association;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import pilot.instagram.domain.post.Post;
+import pilot.instagram.domain.post.entity.Post;
 import pilot.instagram.domain.tag.Tag;
 
 @Entity @Getter
