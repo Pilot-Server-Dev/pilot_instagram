@@ -45,7 +45,7 @@ public class User extends BaseTimeEntity {
         this.name = name;
     }
 
-    public static User fromDtoToUser(UserRequest userRequest) {
+    public static User fromDtoToEntity(UserRequest userRequest) {
         return User.builder()
                 .id(userRequest.getId())
                 .name(userRequest.getName())
