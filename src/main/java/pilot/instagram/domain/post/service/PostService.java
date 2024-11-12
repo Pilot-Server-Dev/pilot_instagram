@@ -23,7 +23,7 @@ public class PostService {
     public PostResponse savePost(PostRequest postRequest, String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException(ErrorCode.USER_NOT_FOUND.getMessage()));
-        return PostResponse.of(postRepository.save(Post.fromDtoToUser(postRequest, user)));
+        return PostResponse.of(postRepository.save(Post.fromDtoToEntity(postRequest, user)));
     }
 
     public PostResponse getPost(Long postId) {

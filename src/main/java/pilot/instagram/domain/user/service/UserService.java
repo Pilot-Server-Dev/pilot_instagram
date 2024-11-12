@@ -19,7 +19,7 @@ public class UserService {
     @Transactional
     public UserResponse saveUser(UserRequest userRequest) {
         validateDuplicateId(userRequest.getId());
-        return UserResponse.of(userRepository.save(User.fromDtoToUser(userRequest)));
+        return UserResponse.of(userRepository.save(User.fromDtoToEntity(userRequest)));
     }
 
     public UserResponse login(String id) {

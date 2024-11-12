@@ -49,7 +49,7 @@ public class Post extends BaseTimeEntity {
         this.user = user;
     }
 
-    public static Post fromDtoToUser(PostRequest postRequest, User user) {
+    public static Post fromDtoToEntity(PostRequest postRequest, User user) {
         return Post.builder()
                 .content(postRequest.getContent())
                 .user(user)
