@@ -9,6 +9,7 @@ import pilot.instagram.domain.post.entity.Post;
 import pilot.instagram.domain.post.repository.PostRepository;
 import pilot.instagram.domain.user.entity.User;
 import pilot.instagram.domain.user.repository.UserRepository;
+import pilot.instagram.exception.ErrorCode;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class PostService {
     @Transactional
     public PostResponse savePost(PostRequest postRequest, String userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("아이디를 찾을 수 없습니다"));
+                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.USER_NOT_FOUND.getMessage()));
         return PostResponse.of(postRepository.save(Post.fromDtoToUser(postRequest, user)));
     }
 }

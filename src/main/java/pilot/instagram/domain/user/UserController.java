@@ -26,7 +26,6 @@ public class UserController {
     public ApiResponse<UserResponse> login(@Valid @RequestBody UserRequest userRequest, HttpSession session) {
         UserResponse userResponse = userService.login(userRequest.getId());
         session.setAttribute("userId", userRequest.getId());
-        // session.getAttribute("userId") 로 userId를 세션에서 가져올 수 있음
         return ApiResponse.of(HttpStatus.OK, userResponse);
     }
 }
