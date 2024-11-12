@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import pilot.instagram.domain.user.UserController;
-import pilot.instagram.domain.user.request.UserRequest;
+import pilot.instagram.domain.user.dto.request.UserRequest;
 import pilot.instagram.domain.user.service.UserService;
 
 import java.util.UUID;

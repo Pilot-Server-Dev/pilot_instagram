@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pilot.instagram.global.ApiResponse;
-import pilot.instagram.domain.user.request.UserRequest;
-import pilot.instagram.domain.user.response.UserResponse;
+import pilot.instagram.domain.user.dto.request.UserRequest;
+import pilot.instagram.domain.user.dto.response.UserResponse;
 import pilot.instagram.domain.user.service.UserService;
 
 @RestController

@@ -1,4 +1,4 @@
-package pilot.instagram.domain.user.response;
+package pilot.instagram.domain.user.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

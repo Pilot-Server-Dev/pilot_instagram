@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pilot.instagram.domain.user.entity.User;
 import pilot.instagram.domain.user.repository.UserRepository;
-import pilot.instagram.domain.user.request.UserRequest;
-import pilot.instagram.domain.user.response.UserResponse;
+import pilot.instagram.domain.user.dto.request.UserRequest;
+import pilot.instagram.domain.user.dto.response.UserResponse;
 
 @Service
 @RequiredArgsConstructor
