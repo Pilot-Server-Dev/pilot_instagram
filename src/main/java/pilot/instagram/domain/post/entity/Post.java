@@ -1,4 +1,4 @@
-package pilot.instagram.domain.post;
+package pilot.instagram.domain.post.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
