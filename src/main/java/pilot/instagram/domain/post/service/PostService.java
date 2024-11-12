@@ -25,4 +25,10 @@ public class PostService {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorCode.USER_NOT_FOUND.getMessage()));
         return PostResponse.of(postRepository.save(Post.fromDtoToUser(postRequest, user)));
     }
+
+    public PostResponse getPost(Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.POST_NOT_FOUND.getMessage()));
+        return PostResponse.of(post);
+    }
 }
