@@ -9,8 +9,8 @@ import pilot.instagram.domain.comment.Comment;
 import pilot.instagram.domain.common.BaseTimeEntity;
 import pilot.instagram.domain.follow.Follow;
 import pilot.instagram.domain.like.Like;
-import pilot.instagram.domain.post.Post;
-import pilot.instagram.domain.user.request.UserRequest;
+import pilot.instagram.domain.post.entity.Post;
+import pilot.instagram.domain.user.dto.request.UserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class User extends BaseTimeEntity {
         this.name = name;
     }
 
-    public static User fromDtoToUser(UserRequest userRequest) {
+    public static User fromDtoToEntity(UserRequest userRequest) {
         return User.builder()
                 .id(userRequest.getId())
                 .name(userRequest.getName())
