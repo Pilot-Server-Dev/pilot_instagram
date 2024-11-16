@@ -2,7 +2,7 @@ package pilot.instagram.domain.media;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import pilot.instagram.domain.post.Post;
+import pilot.instagram.domain.post.entity.Post;
 
 @Entity @Getter
 public class Media {

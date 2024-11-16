@@ -3,7 +3,7 @@ package pilot.instagram.domain.like;
 import jakarta.persistence.*;
 import lombok.Getter;
 import pilot.instagram.domain.common.BaseTimeEntity;
-import pilot.instagram.domain.post.Post;
+import pilot.instagram.domain.post.entity.Post;
 import pilot.instagram.domain.user.entity.User;
 
 @Entity
