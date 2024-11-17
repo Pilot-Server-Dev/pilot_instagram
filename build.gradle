@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.5'
 	id 'io.spring.dependency-management' version '1.1.6'
+	id 'jacoco'
 }
 
 group = 'pilot'
@@ -44,8 +45,36 @@ dependencies {
 	// AOP
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 
+	// Session
 	implementation 'org.springframework.session:spring-session-jdbc:3.2.1'
 }
+
+jacoco {
+	toolVersion = "0.8.9"
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+
+	reports {
+		xml.required.set(true)
+		html.required.set(true)
+
+		afterEvaluate {
+			classDirectories.setFrom(files(classDirectories.files.collect {
+				fileTree(dir: it, include: '**/service/**')
+			}))
+		}
+
+		xml.destination file("${buildDir}/jacoco/index.xml")
+		html.destination file("${buildDir}/jacoco/index.html")
+	}
+}
+/** Jacoco end **/
 
 tasks.named('test') {
 	useJUnitPlatform()

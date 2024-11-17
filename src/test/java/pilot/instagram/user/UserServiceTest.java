@@ -76,7 +76,8 @@ public class UserServiceTest {
         UserRequest userRequest = UserRequest.builder().id(id).name("이기태").build();
 
         //when
-        UserResponse userResponse = userService.saveUser(userRequest);
+        userService.saveUser(userRequest);
+        UserResponse userResponse = userService.login(userRequest.getId());
 
         //then
         assertThat(userResponse.getId()).isNotNull();
