@@ -3,9 +3,12 @@ package pilot.instagram.domain.post;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pilot.instagram.domain.post.dto.request.PostRequest;
+import pilot.instagram.domain.post.dto.response.PostPagingResponse;
 import pilot.instagram.domain.post.dto.response.PostResponse;
 import pilot.instagram.domain.post.service.PostService;
 import pilot.instagram.global.ApiResponse;
@@ -26,5 +29,11 @@ public class PostController {
     @GetMapping("/{postId}")
     public ApiResponse<PostResponse> getPost(@PathVariable("postId") Long postId) {
         return ApiResponse.of(HttpStatus.OK, postService.getPost(postId));
+    }
+
+    @GetMapping("/myPostList")
+    public ApiResponse<Page<PostPagingResponse>> getPosts(HttpSession session, Pageable pageable) {
+        String userId = session.getAttribute("userId").toString();
+        return ApiResponse.of(HttpStatus.OK, postService.getPosts(userId, pageable));
     }
 }
