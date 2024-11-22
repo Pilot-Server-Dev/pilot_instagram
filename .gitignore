@@ -38,3 +38,6 @@ out/
 
 ### QClass ###
 /src/main/generated/
+
+### Database ###
+/src/main/resources/application.yaml
