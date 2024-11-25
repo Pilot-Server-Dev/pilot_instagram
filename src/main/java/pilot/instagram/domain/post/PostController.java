@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pilot.instagram.domain.post.dto.request.PostRequest;
+import pilot.instagram.domain.post.dto.response.PostDeleteResponse;
 import pilot.instagram.domain.post.dto.response.PostPagingResponse;
 import pilot.instagram.domain.post.dto.response.PostResponse;
 import pilot.instagram.domain.post.service.PostService;
@@ -35,5 +36,11 @@ public class PostController {
     public ApiResponse<Page<PostPagingResponse>> getPosts(HttpSession session, Pageable pageable) {
         String userId = session.getAttribute("userId").toString();
         return ApiResponse.of(HttpStatus.OK, postService.getPosts(userId, pageable));
+    }
+
+    @DeleteMapping("/{postId}")
+    public ApiResponse<PostDeleteResponse> deletePost(@PathVariable("postId") Long postId, HttpSession session) {
+        String userId = session.getAttribute("userId").toString();
+        return ApiResponse.of(HttpStatus.OK, postService.deletePost(postId, userId));
     }
 }
