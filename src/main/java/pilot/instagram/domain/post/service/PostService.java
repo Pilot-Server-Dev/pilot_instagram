@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pilot.instagram.domain.post.dto.request.PostRequest;
+import pilot.instagram.domain.post.dto.response.PostDeleteResponse;
 import pilot.instagram.domain.post.dto.response.PostPagingResponse;
 import pilot.instagram.domain.post.dto.response.PostResponse;
 import pilot.instagram.domain.post.entity.Post;
@@ -37,5 +38,16 @@ public class PostService {
 
     public Page<PostPagingResponse> getPosts(String userId, Pageable pageable) {
         return postRepository.findPostByUserIdWithPaged(userId, pageable);
+    }
+
+    @Transactional
+    public PostDeleteResponse deletePost(Long postId, String userId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException(ErrorCode.POST_NOT_FOUND.getMessage()));
+        if(!post.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException(ErrorCode.UNAUTHORIZED_POST_DELETE.getMessage());
+        }
+        postRepository.delete(post);
+        return PostDeleteResponse.of(post);
     }
 }
